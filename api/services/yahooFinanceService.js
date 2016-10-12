@@ -133,7 +133,7 @@ module.exports =  {
             }
         }
 
-        var symbols = "MSFT,YHOO";
+        var symbols = "AAPL,MSFT,SIRI,FB,INTC,CSCO,EBAY,AMZN,NFLX,USLV,TSLA,GOOG,GOOGL,ADBE,ADSK,MAR,PIH,FLWS,FCCY,SRCE,VNET,JOBS,TWOU,AVHI,PYPL,TMUS,YHOO,AAL,BIIB,COST";
         var options={
             url: 'http://finance.google.com/finance/info?client=ig&q=NASDAQ:' + symbols
         }

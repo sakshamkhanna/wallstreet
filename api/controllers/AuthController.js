@@ -16,6 +16,7 @@ module.exports = {
             if ((err) || (!user)) {
                 console.log(info.message);
                 return res.send({
+                    status: -1,
                     message: info.message,
                     user: user
                 });

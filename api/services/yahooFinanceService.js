@@ -61,12 +61,15 @@ module.exports =  {
 
         function callback(error, response, body) {
             if (!error && response.statusCode == 200) {
-                var data = JSON.parse(body);
-                var query=data['query'];
-                var results=query['results'];
-                var quote=results['quote'];
-                for(var i=0;i<query['count'];i++){
-                    findExisting(quote[i]);
+                var quote = JSON.parse(body.replace("// ", ""));
+                for(var i=0;i<quote.length;i++){
+                    var smallquote = {
+                        Symbol: quote[i].t,
+                        Ask: quote[i].l,
+                        Change: quote[i].c,
+                        Name: quote[i].t
+                    }
+                    findExisting(smallquote);
 
 
 
@@ -129,9 +132,10 @@ module.exports =  {
                 console.log(error);
             }
         }
-        var query='select * from yahoo.finance .quotes where symbol in ("YHOO","AAPL","GOOG"," MSFT")';
+
+        var symbols = "MSFT,YHOO";
         var options={
-            url: 'https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20yahoo.finance%20.quotes%20where%20symbol%20in%20(%22YHOO%22%2C%22AAPL%22%2C%22GOOG%22%2C%22%20MSFT%22)%0A%09%09&format=json&env=http%3A%2F%2Fdatatables.org%2Falltables.env&callback='
+            url: 'http://finance.google.com/finance/info?client=ig&q=NASDAQ:' + symbols
         }
 
         request(options,callback);

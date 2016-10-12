@@ -44,11 +44,13 @@ module.exports = {
 
         transactionService.buyStock(req.user.id,sym,qty,time,price,function(err){
             if(!err){
-                return res.ok();
+                var success = {status: 1};
+                return res.send(success);
             }
             else{
                 console.log(err);
-                return res.serverError();
+                var failure = {status: -1};
+                return res.send(failure);
             }
         });
     },

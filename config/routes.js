@@ -35,7 +35,7 @@ module.exports.routes = {
   '/':   'ViewController.index',
 
 
-  '/player': 'PlayerController',
+  '/player/id': 'PlayerController.id',
 
   '/player/profile': 'PlayerController.profile',
 

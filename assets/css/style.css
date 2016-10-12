@@ -66,6 +66,9 @@
 	font-family: 'Signika', sans-serif;
 
 }
+.myContainer{
+	margin-left: 40px;
+}
 
 @media only screen and (max-width: 992px) {
     /* For tablets: */

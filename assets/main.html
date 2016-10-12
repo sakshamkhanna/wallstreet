@@ -20,7 +20,7 @@
   <ul style="    position: absolute;
     height: 98vh;
     top: 65px;" id="slide-out" class="side-nav fixed">
-      <li class="bold"><a href="#!" class="waves-effect waves-teal center">Welcome User</a></li>
+      <li class="bold"><a href="#!" class="waves-effect waves-teal center">Welcome <span id="userName"></span></a></li>
       <a class="waves-effect waves-light modal-trigger" href="#rules">Help</a>
       <ul class="collapsible black-text" data-collapsible="accordion">
 	    <li>
@@ -98,10 +98,10 @@
 	<main>
 		<div class="myContainer">
 		<div class="row">
-			<p><b>Liquid Cash: </b></p>
+			<p><b>Liquid Cash: <span id="liquidCash"></span> </b></p>
 		</div>
 		<div class="row">
-			<p><b>Value: </b></p>
+			<p><b>Worth: <span id="worth"></span></b></p>
 		</div>
 		<div class="row">
 	    <div class="col s12">
@@ -206,9 +206,6 @@
 	<script type="text/javascript" src="js/script.js"></script>
 	 <script type="text/javascript">
  $(function(){
-
-
-
 	 //obtain user session variables
 	 //stocks
 	 $.ajax(
@@ -250,7 +247,7 @@
 		          	'<tr>'+
 		            '<td>'+obj.name+'</td>'+
 		            '<td>$'+obj.worth+'</td>'+
-								'<td><input type="number" name="amount" placeholder="Amount" style="width:50%" id="mfplayer"'+
+								'<td><input type="number"  class="stockVolumeInput" name="amount" placeholder="Amount" style="width:50%" id="mfplayer"'+
 									'data-playerid="'+obj.id+'">'+
 				      		'<a class="waves-effect waves-light btn" onclick=investMF("'+
 										obj.id+
@@ -287,6 +284,23 @@
 		 }
 	 );
  });
+
+
+function updateUserDetailsPage(){
+	var name = localStorage.getItem("playerName");
+	var liquidCash = localStorage.getItem("playerLiquid");
+	var worth = localStorage.getItem("playerWorth");
+	var id = localStorage.getItem("playerId");
+
+	var data = {id: id};
+
+	$.get("/player/id",data,function(e){
+		$("#liquidCash").html(e.liquid);
+		$("#worth").html(e.worth);
+	});
+
+}
+
  function buyStock(sym) {
 		var inp="#stock"+sym;
 		var amt=$(inp)[0].value;
@@ -299,7 +313,13 @@
 				qty: amt
 			},
 			success: function(data){
-			console.log(data);
+				if(data.status == 1){
+					alert("Transaction complete");
+				}
+				else{
+					alert("Transaction failed");
+				}
+				$('.stockVolumeInput').val(" ");
 			}
 		});
 } 
@@ -329,6 +349,9 @@ function investMF(id) {
 			}
 		});
 }
+$(document).ready(function(e){
+	updateUserDetailsPage();
+});
  </script>
 </body>
 </html>

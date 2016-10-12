@@ -32,6 +32,10 @@ passport.use(new LocalStrategy({
             });
           var returnUser = {
             email: user.email,
+            name: user.name,
+            liquid: user.liquid,
+            worth: user.worth,
+            mf: user.mf,
             createdAt: user.createdAt,
             id: user.id
           };

@@ -25,10 +25,11 @@ module.exports= {
 
                     console.log('-----------------------------------');
                     if(!player.stocks[stockSym]){
-                        player.stocks[stockSym]=qty;
+                        player.stocks[stockSym]=Number(qty);
                     }
                     else{
-                        player.stocks[stockSym]+=qty;
+                        var tmp = Number(player.stocks[stockSym]);
+                        player.stocks[stockSym]= Number(tmp + Number(qty));
                     }
                     console.log(player.stocks);
                     player.inStock.push({

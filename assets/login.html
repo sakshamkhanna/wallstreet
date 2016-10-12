@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="description" content="Wallstreet login">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.indigo-pink.min.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<title>WallStreet | Login</title>
+</head>
+<body class="loginBody">
+	<h1 class="text-center">Wallstreet</h1>
+	<div class="mdl-card mdl-shadow--4dp" id="loginForm">
+		<div class="mdl-card__supporting-text">
+			<form method="POST" action="/player/login" id="loginForm" name="loginForm">
+			  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+			    <input class="mdl-textfield__input" type="email" id="email" name="email" required>
+			    <label class="mdl-textfield__label" for="email">Email</label>
+			  </div>
+			  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+			    <input class="mdl-textfield__input" type="password" id="password" name="password" required>
+			    <label class="mdl-textfield__label" for="password">Password</label>
+			  </div>
+			</form>
+		</div>
+		<div class="mdl-card__actions">
+			<button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect" onclick="submitLogin()">
+			  Login
+			</button>
+			<button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect" id="signUpButton">
+			  Register
+			</button>
+		</div>
+	</div>
+	<div class="mdl-card mdl-shadow--4dp" id="signUpForm" style="display: none; ">
+		<div class="mdl-card__supporting-text">
+			<form method="POST" action="/player/signup" name="regForm" id="regForm">
+			  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+			    <input class="mdl-textfield__input" type="text" id="name" name="name">
+			    <label class="mdl-textfield__label" for="name">Name</label>
+			  </div>
+			  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+			    <input class="mdl-textfield__input" type="number" id="regid" name="regid">
+			    <label class="mdl-textfield__label" for="regid">Registration Number</label>
+			  </div>
+			  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+			    <input class="mdl-textfield__input" type="number" id="number" name="number">
+			    <label class="mdl-textfield__label" for="number">Phone Number</label>
+			  </div>
+			  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+			    <input class="mdl-textfield__input" type="email" id="email" name="email">
+			    <label class="mdl-textfield__label" for="email">Email</label>
+			  </div>
+			  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+			    <input class="mdl-textfield__input" type="password" id="password" name="password" required>
+			    <label class="mdl-textfield__label" for="password">Password</label>
+			  </div>
+				<input type="submit">
+			</form>
+		</div>
+		<div class="mdl-card__actions">
+			<button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect" id="singedUpButton" onclick="submitReg()">
+			  Register
+			</button>
+		</div>
+	</div>
+<script defer src="https://code.getmdl.io/1.2.1/material.min.js"></script>	
+<script   src="http://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>  
+<script type="text/javascript">
+	function submitLogin() {
+			document.forms["loginForm"].submit();
+	}	
+	function submitReg() {
+		window.alert("sometext");
+			document.forms["regForm"].submit();
+	}
+	r(function(){
+	    var loginForm = document.querySelector('#loginForm');
+	    var signUpForm = document.querySelector('#signUpForm');
+	    var loginButton = document.querySelector('#LoginButton');
+	    var signedButton = document.querySelector('#singedUpButton');
+	    var signButton = document.querySelector('#signUpButton');
+
+	    signButton.onclick = function () {
+	    	loginForm.style.display = 'none';
+	    	signUpForm.style.display = 'flex';
+	    }
+			/*
+	    signedButton.onclick = function () {
+	    	loginForm.style.display='flex';
+	    	signUpForm.style.display='none';
+	    }
+			*/
+
+	});
+	function r(f){ /in/.test(document.readyState)?setTimeout('r('+f+')',9):f()}
+</script>
+</body>
+</html>

@@ -8,19 +8,17 @@ bcrypt = require('bcrypt');
 
 module.exports = {
   attributes: {
-    id: {
-      type: 'int',
-      required: 'true',
-      unique: 'true',
-      defaultsto: '0',
-      autoIncrement: true
-    },
     name: {
       type: 'string',
       required: true,
     },
     mit: {
       type: 'boolean',
+      required: true,
+      defaultsTo: true
+    },
+    number: {
+      type: 'string',
       required: true
     },
     regno: {
@@ -55,28 +53,27 @@ module.exports = {
       defaultsTo: '50000.0'
     },
     stocks: {
-      type: 'json',
-      required: true,
-      defaultsTo: '[]'
+    type: 'json',
+      defaultsTo: '{}'
     },
     inStock: {
       type: 'json',
-      required: true,
       defaultsTo: '[]'
     },
     outStock: {
       type: 'json',
-      required: true,
       defaultsTo: '[]'
     },
     inMF: {
       type: 'json',
-      required: true,
-      defaultsTo: '[]'
+      defaultsTo: '{}'
     },
     outMF: {
       type: 'json',
-      required: true,
+      defaultsTo: '{}'
+    },
+    ownedMF: {
+      type: 'json',
       defaultsTo: '[]'
     },
     toJSON: function() {

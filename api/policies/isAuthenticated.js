@@ -1,8 +1,11 @@
 module.exports = function(req, res, next) {
+    console.log(req.path + 'in Auth');
    if (req.isAuthenticated()) {
-        return next();
+        console.log('Authenticated!');
+        next();
     }
     else{
-        return res.redirect('/login');
+        console.log('Not Authenticated!');
+        return res.redirect('/player/login');
     }
 };

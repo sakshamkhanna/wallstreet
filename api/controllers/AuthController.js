@@ -9,16 +9,12 @@ var passport = require('passport');
 
 module.exports = {
 
-    _config: {
-        actions: false,
-        shortcuts: false,
-        rest: false
-    },
-
     login: function(req, res) {
-
+        console.log('login init');
+        console.log(req.allParams());
         passport.authenticate('local', function(err, user, info) {
             if ((err) || (!user)) {
+                console.log(info.message);
                 return res.send({
                     message: info.message,
                     user: user
@@ -26,12 +22,12 @@ module.exports = {
             }
             req.logIn(user, function(err) {
                 if (err) res.send(err);
+                console.log(err);
                 return res.send({
                     message: info.message,
                     user: user
                 });
             });
-
         })(req, res);
     },
 

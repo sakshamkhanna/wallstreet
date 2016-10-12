@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Wallstreet login">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
+  	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<title>WallStreet | Main</title>
+</head>
+<body class="mainbody">
+	<nav>
+	<div class="nav-wrapper teal lighten-1">
+      <a href="#" class="brand-logo center">WallStreet</a>
+	<ul class="hide-on-med-and-down">
+	    <li><img src="image/TTlogo.png" alt=""></li>
+  	</ul>
+  <ul style="    position: absolute;
+    height: 98vh;
+    top: 65px;" id="slide-out" class="side-nav fixed">
+      <li class="bold"><a href="#!" class="waves-effect waves-teal center">Welcome User</a></li>
+      <a class="waves-effect waves-light modal-trigger" href="#rules">Help</a>
+      <ul class="collapsible black-text" data-collapsible="accordion">
+	    <li>
+	      <div class="collapsible-header" class="listoflb">Leaderboard</div>
+	      <div class="collapsible-body">
+	      	 <ul class="collection">
+			      <li class="collection-item center">Alvin</li>
+			      <li class="collection-item center">Alvin</li>
+			      <li class="collection-item center">Alvin</li>
+			      <li class="collection-item center">Alvin</li>
+			      <li class="collection-item center">Alvin</li>
+			      <li class="collection-item center">Alvin</li>
+			      <li class="collection-item center">Alvin</li>
+			      <li class="collection-item center">Alvin</li>
+			      <li class="collection-item center">Alvin</li>
+			      <li class="collection-item center">Alvin</li>
+		     </ul>
+	      </div>
+	    </li>
+	    <li>
+	      <div class="collapsible-header" class="listofrel">Relative Position</div>
+	      <div class="collapsible-body">
+	      	 <ul class="collection">
+		      <li class="collection-item center">Alvin</li>
+			      <li class="collection-item center">Alvin</li>
+			      <li class="collection-item center">Alvin</li>
+			      <li class="collection-item center">Alvin</li>
+			      <li class="collection-item center">Alvin</li>
+			      <li class="collection-item center">Alvin</li>
+			      <li class="collection-item center">Alvin</li>
+			      <li class="collection-item center">Alvin</li>
+			      <li class="collection-item center">Alvin</li>
+			      <li class="collection-item center">Alvin</li>
+		    </ul>
+	      </div>
+	    </li>
+	    <li>
+	      <div class="collapsible-header" class="listoftopstocks">Top Stocks</div>
+	      <div class="collapsible-body">
+	      	<ul class="collection">
+		      <li class="collection-item center">Alvin</li>
+			      <li class="collection-item center">Alvin</li>
+			      <li class="collection-item center">Alvin</li>
+			      <li class="collection-item center">Alvin</li>
+			      <li class="collection-item center">Alvin</li>
+			      <li class="collection-item center">Alvin</li>
+			      <li class="collection-item center">Alvin</li>
+			      <li class="collection-item center">Alvin</li>
+			      <li class="collection-item center">Alvin</li>
+			      <li class="collection-item center">Alvin</li>
+		    </ul>
+	      </div>
+	    </li>
+	    <li>
+	      <div class="collapsible-header" class="listoftopinv">Top Investors</div>
+	      <div class="collapsible-body">
+	      	<ul class="collection">
+		      <li class="collection-item center">Alvin</li>
+			      <li class="collection-item center">Alvin</li>
+			      <li class="collection-item center">Alvin</li>
+			      <li class="collection-item center">Alvin</li>
+			      <li class="collection-item center">Alvin</li>
+			      <li class="collection-item center">Alvin</li>
+			      <li class="collection-item center">Alvin</li>
+			      <li class="collection-item center">Alvin</li>
+			      <li class="collection-item center">Alvin</li>
+			      <li class="collection-item center">Alvin</li>
+		    </ul>
+	      </div>
+	    </li>
+	  </ul>
+</ul>
+  	<a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
+	</nav>
+	<main>
+		<div class="myContainer">
+		<div class="row">
+			<p><b>Liquid Cash: </b></p>
+		</div>
+		<div class="row">
+			<p><b>Value: </b></p>
+		</div>
+		<div class="row">
+	    <div class="col s12">
+	      <ul class="tabs">
+	        <li class="tab col s4"><a  class="active" href="#stocks" class="classforstocks" >All Stocks</a></li>
+	        <li class="tab col s4"><a href="#investors" class="classforinvestors">All Investors</a></li>
+         	<li class="tab col s4"><a href="#transactions" class="classfortransactions">Your Stocks</a></li>
+	      </ul>
+	    </div>
+		    <div id="stocks" class="col s12">
+		    	<table class="bordered striped centered responsive-table">
+		        <thead>
+		          <tr>
+		              <th data-field="name">Name</th>
+		              <th data-field="value">Value</th>
+		              <th data-field="trend">Trend</th>
+		              <th data-filed="action"></th>
+		          </tr>
+		        </thead>
+		        <tbody id="stockbody">
+		          <!--<tr>
+		            <td>Alvin</td>
+		            <td>$0.87</td>
+		            <td><i class="material-icons">keyboard_arrow_up</i></td>
+		            <td>
+		            	<input type="number" name="amount" placeholder="Amount" style="width:50%">
+		            	<a class="waves-effect waves-light btn">Buy</a></td>
+		          </tr>-->
+		        </tbody>
+		      </table>
+		    </div>
+		    <div id="investors" class="col s12">
+		    	<table class="bordered striped centered responsive-table">
+		        <thead>
+		          <tr>
+		              <th data-field="name">Name</th>
+		              <th data-field="value">Value</th>
+		              <th data-filed="action"></th>
+		          </tr>
+		        </thead>
+		        <tbody id="investorbody">
+		          <!--<tr>
+		            <td>Alvin</td>
+		            <td>$0.87</td>
+		            <td>
+				      <input type="number" name="amount" placeholder="Amount" style="width:50%">
+				      <a class="waves-effect waves-light btn">Ok</a>
+		            </td>
+		          </tr>-->
+		        </tbody>
+		      </table>
+		    </div>
+		    <div id="transactions" class="col s12">
+		    	<table class="bordered striped centered responsive-table">
+		        <thead>
+		          <!--<tr>
+		              <th data-field="name">Name</th>
+		              <th data-field="value">Value</th>
+		              <th data-field="quantity">Quantity</th>
+		              <th data-field="action"></th>
+		              <th data-field="name">Name</th>
+		              <th data-field="value">Value</th>
+		          </tr>-->
+		        </thead>
+		        <tbody>
+		          <tr>
+		            <td>Alvin</td>
+		            <td>$0.87</td>
+		            <td>20</td>
+		            <td>
+				      <input type="number" name="amount" placeholder="Amount" style="width:50%">
+				      <a class="waves-effect waves-light btn">Sell</a>
+		            </td>
+		             <td>Alvin</td>
+		            <td>$0.87</td>
+		          </tr>
+		        </tbody>
+		      </table>
+		    </div>
+		  </div>
+		  </div>
+	  </main>
+	 <div id="rules" class="modal">
+	    <div class="modal-content">
+	      <h4>Rules</h4>
+	      <p>Copy paste rules here</p>
+	    </div>
+	    <div class="modal-footer">
+	      <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Continue</a>
+	    </div>
+	  </div>
+	   <footer class="page-footer teal lighten-1">
+		  <div class="marquee" >
+			  <div>
+			    <span>You spin me right round, baby. Like a record, baby.</span>
+			    <span>You spin me right round, baby. Like a record, baby.</span>
+			  </div>
+		</div>
+	</footer>
+	  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
+	<script type="text/javascript" src="js/script.js"></script>
+	 <script type="text/javascript">
+ $(function(){
+
+
+
+	 //obtain user session variables
+	 //stocks
+	 $.ajax(
+		 {
+			 url: '/stocks/list',
+			 type: 'GET',
+			 success: function(data){
+				 for(var i = 0; i < data.length; i++) {
+						var obj = data[i];
+						var trend=obj.snapshot.value>=0?'keyboard_arrow_up':'keyboard_arrow_down';
+						$("#stockbody").append(
+							'<tr><td>'+obj.name+'</td><td>$'+obj.snapshot.value+'</td><td><i class="material-icons">'+
+								trend+
+								'</i></td>'+
+							'<td><input type="number" name="amount" placeholder="Amount" style="width:50%"'+
+							'id="stock'+obj.symbol+'">'+
+							'<a class="waves-effect waves-light btn" onclick=buyStock("'+
+							obj.symbol+
+							'")>Buy</a>'+
+							'</td></tr>'
+						);
+						console.log('done!!!!');
+	 var list=$("#stockbody");
+
+	 console.log(list.html());
+					}
+			 }
+		 }
+	 );
+	 //mf
+	 $.ajax(
+		 {
+			 url: '/mf/list',
+			 type: 'GET',
+			 success: function(data){
+				 for(var i = 0; i < data.length; i++) {
+						var obj = data[i];
+						$("#investorbody").append(							
+		          	'<tr>'+
+		            '<td>'+obj.name+'</td>'+
+		            '<td>$'+obj.worth+'</td>'+
+								'<td><input type="number" name="amount" placeholder="Amount" style="width:50%" id="mfplayer"'+
+									'data-playerid="'+obj.id+'">'+
+				      		'<a class="waves-effect waves-light btn" onclick=investMF("'+
+										obj.id+
+									'")>Ok</a>'+
+		            '</td>'+
+		          '</tr>');
+						console.log('done!!!!');
+					}
+					console.log($("#investorbody").html());
+			 }
+		 }
+	 );
+	 //transactions
+	 $.ajax(
+		 {
+			 url: '/mf/list',
+			 type: 'GET',
+			 success: function(data){
+				 for(var i = 0; i < data.length; i++) {
+						var obj = data[i];
+						$("#transactions").append(
+							'<tr><td>'+
+							obj.name+
+							'</td><td>'+
+							obj.worth+
+							'</td><td>'+
+							'<input type="number" name="amount" placeholder="Amount" style="width:50%">'+
+							'<a class="waves-effect waves-light btn">Ok</a>'+
+							'</td></tr>'
+						);
+						console.log('done!!!!');
+					}
+			 }
+		 }
+	 );
+ });
+ function buyStock(sym) {
+		var inp="#stock"+sym;
+		var amt=$(inp)[0].value;
+		console.log(amt);
+		$.ajax({
+			type: "POST",
+			url: "/stocks/buy",
+			data: {
+				stockSymbol: sym,
+				qty: amt
+			},
+			success: function(data){
+			console.log(data);
+			}
+		});
+} 
+function investMF(id) {
+		var invbody=$("#investorbody");
+		var inp=null;
+		console.log(invbody);
+		for(var i = 0 ; i<inps.lenth;i++){
+			console.log("-----------------------");
+			console.log(inps[i].html());
+			if(inps[i].data-playerid == id){
+				inp=inps[i];
+				break;
+			}
+		}
+		var amt=inp.value;
+		console.log(amt);
+		$.ajax({
+			type: "POST",
+			url: "/MF/invest",
+			data: {
+				userid: id,
+				amt: amt
+			},
+			success: function(data){
+				console.log(data);
+			}
+		});
+}
+ </script>
+</body>
+</html>

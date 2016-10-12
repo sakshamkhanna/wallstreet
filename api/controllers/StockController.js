@@ -8,33 +8,47 @@
 module.exports = {
 
     listStocks: function(req,res){
-        Stock.find({}).exec(function(err,obj){
-            return res.json(obj);
-        })
+        var arch=req.param('archive');
+        if(!arch || arch==false){
+            Stock.find({select: ['symbol','name','snapshot']}).exec(function(err,obj){
+                if(err){
+                    console.log(err);
+                    return res.serverError();
+                }
+                return res.json(obj);
+            });
+        }
+        else{ 
+            Stock.find({select: ['symbol','name','snapshot','archive']}).exec(function(err,obj){
+                if(err){
+                    console.log(err);
+                    return res.serverError();
+                }
+                return res.json(obj);
+            });
+        }
     },
 
     buyStock: function(req,res){
         var pid,sym,qty,time,price;
-        pid=req.param('playerID');
         sym=req.param('stockSymbol');
         qty=req.param('qty');
         time=Date.now();
         price=req.param('price');
-        if(!pid || !sym || !qty){
+        if(!sym || !qty){
             return res.badRequest();
         }
 
         
-        //validate
+        //validate for latest values
 
-
-        transactionService.buyStock(pid,sym,qty,time,price,function(err){
+        transactionService.buyStock(req.user.id,sym,qty,time,price,function(err){
             if(!err){
                 return res.ok();
             }
             else{
                 console.log(err);
-                return res.redirect('back');
+                return res.serverError();
             }
         });
     },
@@ -43,7 +57,7 @@ module.exports = {
         var pid,sym,qty,time,price;
         pid=req.param('playerID');
         sym=req.param('stockSymbol');
-        qty=req.param('qty');
+        qty=Number(req.param('qty'));
         time=Date.now();
         price=req.param('price');
         if(!pid || !sym || !qty){

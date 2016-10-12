@@ -1,9 +1,84 @@
-<h1>Signup</h1>
-<form method="POST" action="/Player/signup">
-  <input type="text" name="player[name]" value="Name">
-  <input type="checkobx" name="player[mit]">
-  <input type="text" name="player[regno]" value="reg no">
-  <input type="email" name="player[email]" value="email">
-  <input type="password" name="player[password]" value="pwd">
-  <input type="submit" value="submit">
-</form>
+<h1 class="text-center">Wallstreet</h1>
+	<div class="mdl-card mdl-shadow--4dp" id="loginForm">
+		<div class="mdl-card__supporting-text">
+			<form method="POST" action="/Player/signup">
+			  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+			    <input class="mdl-textfield__input" type="email" id="eid">
+			    <label class="mdl-textfield__label" for="eid">Email</label>
+			  </div>
+			  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+			    <input class="mdl-textfield__input" type="password" id="pass">
+			    <label class="mdl-textfield__label" for="pass">Password</label>
+			  </div>
+			</form>
+		</div>
+		<div class="mdl-card__actions">
+			<button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect">
+			  Login
+			</button>
+			<button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect" id="signUpButton">
+			  Register
+			</button>
+		</div>
+	</div>
+	<div class="mdl-card mdl-shadow--4dp" id="signUpForm" style="display: none; ">
+		<div class="mdl-card__supporting-text">
+			<form action="#">
+			  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+			    <input class="mdl-textfield__input" type="text" id="name">
+			    <label class="mdl-textfield__label" for="name">First Name</label>
+			  </div>
+			</form>
+			<form action="#">
+			  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+			    <input class="mdl-textfield__input" type="number" id="cid">
+			    <label class="mdl-textfield__label" for="cid">Registration Number</label>
+			  </div>
+			</form>
+			<form action="#">
+			  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+			    <input class="mdl-textfield__input" type="number" id="num">
+			    <label class="mdl-textfield__label" for="num">Phone Number</label>
+			  </div>
+			</form>
+			<form action="#">
+			  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+			    <input class="mdl-textfield__input" type="email" id="eid">
+			    <label class="mdl-textfield__label" for="eid">Email</label>
+			  </div>
+			</form>
+			<form action="#">
+			  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+			    <input class="mdl-textfield__input" type="password" id="pass">
+			    <label class="mdl-textfield__label" for="pass">Password</label>
+			  </div>
+			</form>
+		</div>
+		<div class="mdl-card__actions">
+			<button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect" id="singedUpButton">
+			  Register
+			</button>
+		</div>
+	</div>
+  <script type="text/javascript">
+	r(function(){
+	    var loginForm = document.querySelector('#loginForm');
+	    var signUpForm = document.querySelector('#signUpForm');
+	    var loginButton = document.querySelector('#LoginButton');
+	    var signedButton = document.querySelector('#singedUpButton');
+	    var signButton = document.querySelector('#signUpButton');
+
+	    signButton.onclick = function () {
+	    	loginForm.style.display = 'none';
+	    	signUpForm.style.display = 'flex';
+	    }
+
+	    signedButton.onclick = function () {
+	    	loginForm.style.display='flex';
+	    	signUpForm.style.display='none';
+	    }
+
+	});
+	function r(f){ /in/.test(document.readyState)?setTimeout('r('+f+')',9):f()}
+</script>
+

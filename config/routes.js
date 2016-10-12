@@ -32,62 +32,56 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
-  '/': {
-    view: 'homepage'
-  },
-  
-  'get /login': {
-       view: 'login'
-  },
+  '/':   'ViewController.index',
 
-  'post /login': 'AuthController.login',
 
-  '/logout': 'AuthController.logout',
+  '/player': 'PlayerController',
 
-  'get /signup': {
-    view: 'signup'
+  '/player/profile': 'PlayerController.profile',
+
+  'get /player/login': function(req,res){
+    res.sendfile(sails.config.appPath + '/assets/login.html');
   },
 
-  'post /signup': 'PlayerController.signup',
+  'post /player/login': 'AuthController.login',
 
-  // '/stocks': 'StockController.view', 
+  '/player/logout': 'AuthController.logout',
+
+  'get /player/signup': function(req,res){
+    res.sendfile(sails.config.appPath + '/assets/login.html');
+  },
+
+  'post /player/signup': 'PlayerController.signup',
+
+  'post /player/update': 'PlayerController.update',
+
+
+  '/stocks/':  'StockController',
 
   '/stocks/list': 'StockController.listStocks',
 
-  'post /stocks/buy': 'StockController.buyStock',
+  'post /stocks/buy':  'StockController.buyStock',
 
   'post /stocks/sell': 'StockController.sellStock',
 
-  // '/invest': '',
 
-  '/mf/list': 'MFController/listMF',
+  '/mf/': 'MKController',
+
+  '/mf/list': 'MFController.listMF',
 
   'post mf/invest': 'MFController.invest',
 
   'post mf/enable': 'MFController.enable',
 
   'post mf/disable': 'MFController.disable',
+ 
 
-  // '/profile': 
+  '/stats/leaderboard': 'StatsController.leaderobard',
 
-  'post /profile': 'PlayerController.UpdateDetails',
+  '/stats/relative': 'StatsController.relative',
 
-  // '/statistics': 'StatsController.view'
+  '/stats/topstocks': 'Statistics.topStocks',
 
-  '/statistics/leaderboard': 'StatsController.leaderobard',
-
-  '/statistics/relative': 'StatsController.relative',
-
-
-
-  /***************************************************************************
-  *                                                                          *
-  * Custom routes here...                                                    *
-  *                                                                          *
-  * If a request to a URL doesn't match any of the custom routes above, it   *
-  * is matched against Sails route blueprints. See `config/blueprints.js`    *
-  * for configuration options and examples.                                  *
-  *                                                                          *
-  ***************************************************************************/
+  '/stats/topmf': 'Statistics.topMF'
 
 };

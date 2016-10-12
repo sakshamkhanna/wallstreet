@@ -7,12 +7,15 @@ module.exports =  {
 
         function updateStock(err,newStock,data){
             if(!err){
+                console.log('updating the value with ' + newStock.archive.length);
                 Stock.update({
-                    symbol: data['Symbol']},{
-                    newStock}).exec(function(err,obj){
+                    symbol: data['Symbol']},newStock).exec(function(err,obj){
                         if(err) console.log(err);
                         else console.log('Updated value of '+data['Symbol']+' to '+data['Ask']);
                     });
+                // newStock.save(function(err){
+                //     if(err) console.log(err);
+                // });
             }
         }
 

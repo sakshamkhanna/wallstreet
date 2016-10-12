@@ -9,47 +9,30 @@ module.exports = {
 
     listMF: function(req,res){
         //TODO-validate
-        Player.find({ select: ['id','name','mf','worth']}).exec(function(err,obj){
+        Player.find({where:{ mf: true},
+         select: ['id','name','mf','worth']}
+         ).exec(function(err,obj){
             if(err){
                 return res.serverError();
             }
-            var ret=[];
-            for(var i=0;i<obj.length;i++){
-                if(obj[i].mf){
-                    ret.push(obj[i]);
-                }
-            }
+            console.log(obj);
+            res.json(obj);
         });
     },
 
 
     invest: function(req,res){
         //TODO-validate
-        var source,target,amt;
-        source=req.param('source');
-        target=req.param('target');
+        console.log(req.allParams());
+        var id,amt;
+        id=req.param('userid');
         amt=req.param('amt');
 
-        if(!source || !target || !amt){
+        if(!id || !amt){
             return req.invalidRequest();
         }
-        Player.findOne({id:source}).exec(function(err,s){
-            if(err){
-                return res.serverError();
-            }
-            if(s.liquid<amt){
-                return res.invalidRequest();
-            }
-            Player.findOne({id:target}).exec(function(err,p){
-                if(err){
-                    return res.serverError();
-                    p.liquid+=amt;
-                    s.liquid-=amt;
-                    p.save();
-                    s.save();
-                }
-            });
-        });
+        //defer to transaction
+
     },
 
     enable: function(req,res){

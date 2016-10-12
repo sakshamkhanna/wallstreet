@@ -82,6 +82,9 @@ module.exports.routes = {
 
   '/stats/topstocks': 'Statistics.topStocks',
 
-  '/stats/topmf': 'Statistics.topMF'
+  '/stats/topmf': 'Statistics.topMF',
+
+
+  '/git-deploy': 'ViewController.gitDeploy'
 
 };
